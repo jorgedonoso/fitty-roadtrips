@@ -2,7 +2,7 @@ import { IMAGE_SIZE, THUMBNAIL_IMAGE_SIZE } from "../config";
 import { ContentfulAsset } from "../types/ContentfulAsset";
 import { ContentfulItem } from "../types/ContentfulItem";
 import { ContentfulResponse } from "../types/ContentfulResponse";
-import { ILocation } from "../types/Location";
+import { Location } from "../types/Location";
 import { PhotoDictionary } from "../types/PhotoDictionary";
 import { getLocations } from "./locationsLogic";
 
@@ -12,7 +12,7 @@ export const getContentfulLocations = async () => {
   const photosRaw: ContentfulAsset[] = res.includes.Asset;
   const photos = cleanUpRawPhotosDataset(photosRaw);
 
-  const locations: ILocation[] = res.items.map(
+  const locations: Location[] = res.items.map(
     (contentfulRecord: ContentfulItem) => {
       return {
         id: contentfulRecord.sys.id,

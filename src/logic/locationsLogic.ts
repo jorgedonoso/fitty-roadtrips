@@ -1,4 +1,6 @@
 import { ContentfulResponse } from "../types/ContentfulResponse";
+import { Region } from "../types/Region";
+import { Location } from "@/src/types/Location";
 
 // For route generation.
 export async function getLocationIds() {
@@ -23,4 +25,16 @@ export async function getLocations() {
 export async function getLocationById(id: string) {
   const data = await getLocations();
   return data.items.find((i) => i.sys.id === id);
+}
+
+export function filterLocationsByRegion(
+  locations: Location[],
+  regions: Region[],
+  regionSlug: string,
+) {
+  const region = regions.find((r: Region) => r.slug === regionSlug);
+
+  if (!region) return [];
+
+  return locations.filter((loc: any) => region.states.includes(loc.state));
 }

@@ -1,7 +1,7 @@
 import { Gallery } from "@/components/Gallery";
 import { regions } from "@/src/data/regions";
 import { getContentfulLocations } from "@/src/logic/contentfulLogic";
-import { ILocation } from "@/src/types/Location";
+import { filterLocationsByRegion } from "@/src/logic/locationsLogic";
 import { Card } from "@ikefakis/react-polaroid-photo-deck";
 
 type Props = {
@@ -28,16 +28,4 @@ export default async function RegionPage({ params }: Props) {
   }));
 
   return <Gallery cards={cards} />;
-}
-
-function filterLocationsByRegion(
-  locations: ILocation[],
-  regionsArray: any,
-  regionName: string,
-) {
-  const region = regionsArray.find((r: any) => r.slug === regionName);
-
-  if (!region) return [];
-
-  return locations.filter((loc: any) => region.states.includes(loc.state));
 }
