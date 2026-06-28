@@ -36,5 +36,5 @@ export function filterLocationsByRegion(
 
   if (!region) return [];
 
-  return locations.filter((loc: any) => region.states.includes(loc.state));
+  return locations.filter((loc: Location) => region.states.includes(loc.state));
 }
