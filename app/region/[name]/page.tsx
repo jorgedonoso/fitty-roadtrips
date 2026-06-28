@@ -2,7 +2,7 @@ import { Gallery } from "@/components/Gallery";
 import { regions } from "@/src/data/regions";
 import { getContentfulLocations } from "@/src/logic/contentfulLogic";
 import { filterLocationsByRegion } from "@/src/logic/locationsLogic";
-import { Card } from "@ikefakis/react-polaroid-photo-deck";
+import Link from "next/link";
 
 type Props = {
   params: {
@@ -21,11 +21,14 @@ export default async function RegionPage({ params }: Props) {
     regionSlug,
   );
 
-  const cards: Card[] = regionLocations.map((l) => ({
-    url: l.imageUrl,
-    date: `${l.city}, ${l.state}`,
-    caption: l.title,
-  }));
-
-  return <Gallery cards={cards} />;
+  return (
+    <div className="h-screen flex flex-col">
+      <Gallery locations={regionLocations} />
+      <div className="shrink-0 p-4 relative text-center">
+        <Link href="/" className="underline">
+          Go Back
+        </Link>
+      </div>
+    </div>
+  );
 }
