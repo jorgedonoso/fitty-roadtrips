@@ -10,7 +10,7 @@ export async function getLocationIds() {
 
 // Main data loader.
 export async function getLocations() {
-  const res = await fetch(process.env.API_URL!, {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL!, {
     cache: "force-cache",
   });
 
@@ -30,9 +30,9 @@ export async function getLocationById(id: string) {
 export function filterLocationsByRegion(
   locations: Location[],
   regions: Region[],
-  regionSlug: string,
+  name: string,
 ) {
-  const region = regions.find((r: Region) => r.slug === regionSlug);
+  const region = regions.find((r: Region) => r.name === name);
 
   if (!region) return [];
 
