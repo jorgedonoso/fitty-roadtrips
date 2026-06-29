@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Permanent_Marker } from "next/font/google";
 import "./globals.css";
-import Script from "next/script";
 
 export const polaroidFont = Permanent_Marker({
   subsets: ["latin"],
@@ -34,10 +33,6 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${polaroidFont.variable} h-full antialiased`}
     >
-      <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
-        strategy="afterInteractive"
-      />
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
