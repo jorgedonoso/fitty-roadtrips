@@ -17,7 +17,7 @@ export default function MapSection() {
   const { activeStates } = useMapContext();
 
   return (
-    <section className="h-[30vh] w-full">
+    <section className="h-[40vh] w-full">
       <OpenStreetMap highlightedStates={activeStates} />
     </section>
   );

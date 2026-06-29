@@ -57,9 +57,9 @@ export default function OpenStreetMap({
         stateToRegion[stateName]?.name === hoveredRegion;
 
       layer.setStyle({
-        fillColor: isSelected ? "#2563eb" : isHovered ? "#93c5fd" : "#ffffff",
-        fillOpacity: isSelected ? 0.7 : isHovered ? 0.5 : 0,
-        color: "#666",
+        fillColor: isSelected ? "#6C5CE7" : isHovered ? "#6C5CE7" : "#ffffff",
+        fillOpacity: isSelected ? 0.4 : isHovered ? 0.1 : 0,
+        color: "#DDD6FE",
         weight: 1,
       });
     });
@@ -75,7 +75,7 @@ export default function OpenStreetMap({
         )}
         <MapContainer
           center={[39.5, -98.35]}
-          zoom={3}
+          zoom={4}
           zoomControl={false}
           className="h-full w-full"
         >
@@ -89,8 +89,8 @@ export default function OpenStreetMap({
               ref={geoJsonRef}
               data={geoJsonData}
               style={{
-                color: "#666",
-                weight: 1,
+                color: "#DDD6FE",
+                weight: 0,
                 fillColor: "#ffffff",
                 fillOpacity: 0,
               }}

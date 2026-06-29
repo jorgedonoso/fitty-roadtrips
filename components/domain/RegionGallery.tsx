@@ -19,9 +19,5 @@ export default function RegionGallery({ name }: { name: string }) {
     load();
   }, [name]);
 
-  return (
-    <div>
-      <Gallery locations={locations} />
-    </div>
-  );
+  return <Gallery locations={locations} />;
 }
