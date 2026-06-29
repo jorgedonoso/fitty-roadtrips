@@ -25,6 +25,8 @@ const _regions = {
     "Florida",
     "Alabama",
     "Mississippi",
+    "Arkansas",
+    "Louisiana",
   ],
   Midwest: [
     "Ohio",
