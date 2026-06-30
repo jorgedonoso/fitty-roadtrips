@@ -2,25 +2,30 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { Coordinates } from "../types/Coordinates";
+import { regions } from "@/src/data/regions";
 
 interface MapContextType {
   activeStates: string[];
-  regionName: string | undefined;
-  setHighlight: (states: string[], name?: string) => void;
+  regionName: string;
+  setHighlight: (states: string[], name: string) => void;
   coordinates?: Coordinates;
   setCoordinates: (coordinates?: Coordinates) => void;
 }
 
 const MapContext = createContext<MapContextType | undefined>(undefined);
+const defaultRegionName = "Southeast";
+const defaultActiveStates =
+  regions.find((r) => r.name == defaultRegionName)?.states || [];
 
 export function MapProvider({ children }: { children: ReactNode }) {
-  const [activeStates, setActiveStates] = useState<string[]>([]);
-  const [regionName, setRegionName] = useState<string | undefined>(undefined);
+  const [activeStates, setActiveStates] =
+    useState<string[]>(defaultActiveStates);
+  const [regionName, setRegionName] = useState<string>(defaultRegionName);
   const [coordinates, setCoordinatesState] = useState<Coordinates | undefined>(
     undefined,
   );
 
-  const setHighlight = (states: string[], name?: string) => {
+  const setHighlight = (states: string[], name: string) => {
     setActiveStates(states);
     setRegionName(name);
   };
