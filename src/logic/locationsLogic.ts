@@ -10,7 +10,7 @@ export async function getLocationIds() {
 
 // Main data loader.
 export async function getLocations() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL!, {
+  const res = await fetch(process.env.NEXT_PUBLIC_CONTENTFUL_API_URL!, {
     cache: "force-cache",
   });
 
